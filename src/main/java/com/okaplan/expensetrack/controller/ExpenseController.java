@@ -27,4 +27,16 @@ public class ExpenseController {
        Expense _expense = expenseService.save(expense);
        return new ResponseEntity<>(_expense, HttpStatus.OK);
     }
+
+    @GetMapping("expenses/{id}")
+    public ResponseEntity<Expense> save (@PathVariable("id") Long id){
+        Expense _expense = expenseService.findById(id);
+        return new ResponseEntity<>(_expense, HttpStatus.OK);
+    }
+
+    @DeleteMapping("expenses/{id}")
+    public ResponseEntity<String> delete (@PathVariable("id") Long id){
+        expenseService.delete(id);
+        return new ResponseEntity<>("Expense is deleted Successfully", HttpStatus.OK);
+    }
 }
